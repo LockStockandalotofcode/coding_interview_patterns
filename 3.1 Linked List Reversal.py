@@ -10,12 +10,16 @@ class ListNode:
 
 def linked_list_reversal(head: ListNode) -> ListNode:
 
-    # BASE CASE
-    if not head or not head.next:
-        return head
-    
-    immediate_next = head.next
-    new_head = linked_list_reversal(head.next)
-    immediate_next.next = head
-    head.next = None
-    return new_head
+    if not head:
+        return None
+
+    prev_node = None
+    curr_node = head
+    while curr_node is not None:
+        next_node = curr_node.next # saving reference to next node
+        curr_node.next = prev_node
+        prev_node = curr_node
+        curr_node = next_node
+
+    # prev_node is the head to the newly formed list, since curr_node must be None so that while loop terminated
+    return prev_node
