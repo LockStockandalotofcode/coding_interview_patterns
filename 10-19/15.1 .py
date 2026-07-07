@@ -2,7 +2,7 @@ def climbing_stairs(n: int) -> int:
     if n <= 2:
         return n
     
-    dp = [0] * n
+    dp = [0] * (n + 1)
 
     dp[1] = 1
     dp[2] = 2
