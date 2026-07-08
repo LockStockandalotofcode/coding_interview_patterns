@@ -14,6 +14,7 @@ def candies(ratings: List[int]) -> int:
     # right to left pass : decreasing, child > right_neighbor, starting at index n-1, since index n-1 has no right neighbor
     for i in range(n - 2, -1, -1):
         if ratings[i] > ratings[i + 1]:
+            # max so that both work done from left pass, is not lost in right pass
             candies[i] = max(candies[i], candies[i + 1] + 1)
 
     return sum(candies)
